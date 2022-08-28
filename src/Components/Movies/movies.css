@@ -4,6 +4,8 @@ ul {
 
 .movie_title {
   width: 70%;
+  font-size: 1.2em;
+  font-weight: bolder;
 }
 
 li {
@@ -19,13 +21,20 @@ li {
   position: absolute;
   right: 0;
   top: 410px;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.heart.liked {
+  color : red ;
 }
 
 .like {
   position: absolute;
   right: 0;
   top: 430px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
 }
 
 .movie_image {
