@@ -8,6 +8,7 @@ import './movies.css';
 const Movie = ({ id, title, image }) => {
   const [likeAdded, setLikeAdded] = useState(false);
   const dispatch = useDispatch();
+
   // Post like to api
   const handleLike = () => {
     if (likeAdded) return;
