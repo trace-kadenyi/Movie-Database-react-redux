@@ -8,10 +8,8 @@ const Movies = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (movies.length === 0) {
-      dispatch(fetchMovies());
-    }
-  }, []);
+    dispatch(fetchMovies());
+  }, [movies, dispatch]);
 
   return (
     <div className="container-fluid">
@@ -23,6 +21,7 @@ const Movies = () => {
             id={movie.id}
             title={movie.title}
             image={movie.image}
+            likes={movie.likes}
           />
         ))}
       </ul>
