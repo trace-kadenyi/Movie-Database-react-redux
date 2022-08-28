@@ -1,21 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { FaHeart } from 'react-icons/fa';
-import { postLike, getLike } from '../../redux/movies.redux';
+import { postLike } from '../../redux/movies.redux';
 import './movies.css';
 
-const Movie = ({ id, title, image }) => {
+const Movie = ({
+  id, title, image, likes,
+}) => {
   const dispatch = useDispatch();
-  
-  // dispatch(getLike());
-  // Get likes from api and store in redux
-  // useEffect(() => {
-  //   dispatch(getLike());
-  // }, []);
-  // dispatch(getLike());
-
-  // Get likes from redux store
 
   // Post like to api
   const handleLike = () => {
@@ -27,8 +20,22 @@ const Movie = ({ id, title, image }) => {
       <div className="mb-3 mainList">
         <img src={image} className="movie_image" alt={title} />
         <h3 className="movie_title my-2">{title}</h3>
-        <FaHeart className="heart" onClick={handleLike} />
-        <span className="like">0 likes</span>
+        { likes > 0 ? (<FaHeart className="heart liked" onClick={handleLike} />)
+          : (<FaHeart className="heart" onClick={handleLike} />)}
+        { likes === 1 ? (
+          <span className="likes">
+            {likes}
+            {' '}
+            like
+          </span>
+        )
+          : (
+            <span className="likes">
+              {likes}
+              {' '}
+              likes
+            </span>
+          )}
       </div>
       <button type="button" className="commentBox">Comment</button>
     </li>
@@ -39,6 +46,7 @@ Movie.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  likes: PropTypes.number.isRequired,
 };
 
 export default Movie;
