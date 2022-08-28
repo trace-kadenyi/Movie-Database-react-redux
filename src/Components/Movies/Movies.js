@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchMovies, selectAllMovies } from '../../redux/movies.redux';
+import { fetchMovies } from '../../redux/movies.redux';
 import Movie from './Movie';
 
 const Movies = () => {
-  const movies = useSelector(selectAllMovies);
+  const movies = useSelector((state) => state.movies);
   const dispatch = useDispatch();
 
   useEffect(() => {
