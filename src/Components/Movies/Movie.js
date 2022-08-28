@@ -7,6 +7,8 @@ import './movies.css';
 
 const Movie = ({ id, title, image }) => {
   const dispatch = useDispatch();
+  
+  // dispatch(getLike());
   // Get likes from api and store in redux
   // useEffect(() => {
   //   dispatch(getLike());
