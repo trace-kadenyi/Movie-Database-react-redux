@@ -1,0 +1,63 @@
+.commentImage {
+    border-radius: 20%;
+}
+
+.movieComments {
+    position: relative;
+    width: 100%;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.close_me {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    color: black;
+    font-weight: 900;
+    font-size: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+textarea {
+    width: 100%;
+}
+
+.submit {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+.contain {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+

@@ -1,8 +1,11 @@
+/* eslint-disable */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { FaHeart } from 'react-icons/fa';
 import { postLike } from '../../redux/movies.redux';
+import { NavLink } from 'react-router-dom';
 import './movies.css';
 
 const Movie = ({
@@ -14,6 +17,7 @@ const Movie = ({
   const handleLike = () => {
     dispatch(postLike(id));
   };
+
 
   return (
     <li className="mb-3">
@@ -37,7 +41,11 @@ const Movie = ({
             </span>
           )}
       </div>
-      <button type="button" className="commentBox">Comment</button>
+      <button id={id} type="button" className="commentBox">
+      <NavLink to={`comments/${id}`} className="commentLink">
+      Comment
+      </NavLink>
+      </button>
     </li>
   );
 };

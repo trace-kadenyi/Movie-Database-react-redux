@@ -1,3 +1,4 @@
+/* eslint-disable */
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
@@ -5,6 +6,8 @@ const FETCH_MOVIES = 'movies-db-app/movies.redux.js/FETCH_MOVIES';
 const POST_LIKES = 'movies-db-app/movies.redux.js/POST_LIKES';
 const BASE_URL = 'https://yts.mx/api/v2/list_movies.json?genre=animation&limit=50&sort_by=download_count&minimum_rating=7';
 const LIKE_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/nWHbxSiuSFC7nMEf03JD/likes/';
+const GET_COMMENTS = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/nWHbxSiuSFC7nMEf03JD/comments/`
+const POST_COMMENTS = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/nWHbxSiuSFC7nMEf03JD/comments/';
 
 const initialState = [];
 
@@ -18,6 +21,15 @@ const moviesReducer = (state = initialState, action) => {
           return {
             ...movie,
             likes: movie.likes + 1,
+          };
+        } return movie;
+      });
+    case `${POST_COMMENTS}/fulfilled`:
+      return state.map((movie) => {
+        if (movie.id === action.payload.id) {
+          return {
+            ...movie,
+            comments: [...movie.comments, action.payload.comment],
           };
         } return movie;
       });
@@ -59,12 +71,19 @@ export const fetchMovies = createAsyncThunk(FETCH_MOVIES,
   async () => {
     const { data } = await axios.get(BASE_URL);
     const likes = await axios.get(LIKE_URL);
+    // const comments = await axios.get(`${GET_COMMENTS}?item_id=${movie.id}`);
     return restructredMovies(data, likes.data);
   });
 
 // Post Like to api
 export const postLike = createAsyncThunk(POST_LIKES, async (id) => {
   const response = await axios.post(LIKE_URL, { item_id: id });
+  return response.data;
+});
+
+// Post Comment to api
+export const postComment = createAsyncThunk(POST_COMMENTS, async (comment) => {
+  const response = await axios.post(POST_COMMENTS, comment);
   return response.data;
 });
 
