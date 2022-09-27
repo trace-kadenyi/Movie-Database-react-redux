@@ -26,12 +26,10 @@ const moviesReducer = (state = initialState, action) => {
       });
     case `${POST_COMMENTS}/fulfilled`:
       return state.map((movie) => {
-        if (movie.id === action.payload.id) {
-          return {
-            ...movie,
-            comments: [...movie.comments, action.payload.comment],
-          };
-        } return movie;
+        if (movie.id === currentComment.item_id) {
+          Object.assign(movie, { comments: currentComment.comment });
+        }
+        return movie;
       });
     default:
       return state;
@@ -71,7 +69,6 @@ export const fetchMovies = createAsyncThunk(FETCH_MOVIES,
   async () => {
     const { data } = await axios.get(BASE_URL);
     const likes = await axios.get(LIKE_URL);
-    // const comments = await axios.get(`${GET_COMMENTS}?item_id=${movie.id}`);
     return restructredMovies(data, likes.data);
   });
 
@@ -82,8 +79,10 @@ export const postLike = createAsyncThunk(POST_LIKES, async (id) => {
 });
 
 // Post Comment to api
+let currentComment;
 export const postComment = createAsyncThunk(POST_COMMENTS, async (comment) => {
   const response = await axios.post(POST_COMMENTS, comment);
+  currentComment = comment
   return response.data;
 });
 
