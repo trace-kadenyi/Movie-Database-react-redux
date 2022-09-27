@@ -1,21 +1,26 @@
 /* eslint-disable */
-import React from 'react';
-import axios from 'axios';
-import { NavLink, useParams } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { AiOutlineClose } from 'react-icons/ai';
-import { selectAllMovies, fetchMovies, postComment } from '../../redux/movies.redux';
-import './comments.css';
-import { useState } from 'react';
+import React from "react";
+import axios from "axios";
+import { NavLink, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { AiOutlineClose } from "react-icons/ai";
+import {
+  selectAllMovies,
+  fetchMovies,
+  postComment,
+} from "../../redux/movies.redux";
+import "./comments.css";
+import { useState } from "react";
 
 const Comments = () => {
-  const [username, setUserName] = useState('');
-  const [comment, setComment] = useState('');
+  const [username, setUserName] = useState("");
+  const [comment, setComment] = useState("");
+  const [fetchedComments, setFetchedComments] = useState([]);
   const movies = useSelector(selectAllMovies);
   const dispatch = useDispatch();
   const { id } = useParams();
-  const foundMovie = movies.find((movie) => Number(movie.id) === Number(id))
+  const foundMovie = movies.find((movie) => Number(movie.id) === Number(id));
 
   useEffect(() => {
     dispatch(fetchMovies());
@@ -29,86 +34,112 @@ const Comments = () => {
       comment,
     };
     dispatch(postComment(newComment));
-    setUserName('');
-    setComment('');
+    setUserName("");
+    setComment("");
   };
   let commentsContainer;
   const fetchComments = async () => {
-    const response = await axios.get(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/nWHbxSiuSFC7nMEf03JD/comments?item_id=${Number(foundMovie.id)}`);
-    // check if status is 200
-    if (response.status === 200) {
-      console.log(response.data);
-    }
+    await axios
+      .get(
+        `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/nWHbxSiuSFC7nMEf03JD/comments?item_id=${Number(
+          foundMovie.id
+        )}`
+      )
+      .then((res) => {commentsContainer = res
+        setFetchedComments(commentsContainer)
+      })
+      .catch((err) => err);
   };
 
   useEffect(() => {
     fetchComments();
-  }, []);
+  }, [[], handleSubmit]);
+
 
   return (
     <div className="movieComments">
       <NavLink to="/" className="closeButton">
-      <AiOutlineClose className="close_me" />
+        <AiOutlineClose className="close_me" />
       </NavLink>
-      <h3 className="commentTitle">{foundMovie.title} {Number(foundMovie.id)}</h3>
-      <img src={foundMovie.image} className="commentImage" alt={foundMovie.title} />
+      <h3 className="commentTitle">
+        {foundMovie.title} {Number(foundMovie.id)}
+      </h3>
+      <img
+        src={foundMovie.image}
+        className="commentImage"
+        alt={foundMovie.title}
+      />
       <div className="contain">
-      <table className="table table-dark table-striped table-hover">
-        <thead>
-          <tr>
-            <th colSpan="2" scope="col">MOVIE DATA</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Rating:</th>
-            <td>{foundMovie.rating} / 10</td>
-          </tr>
-          <tr>
-            <th scope="row">Likes:</th>
-            <td>{foundMovie.likes} Likes</td>
-          </tr>
-          <tr>
-            <th scope="row">Release Date:</th>
-            <td>{foundMovie.year}</td>
-          </tr>
-          <tr>
-            <th scope="row">Genres:</th>
-            <td>{foundMovie.genres}</td>
-          </tr>
-          <tr>
-            <th scope="row">URL:</th>
-            <td>{foundMovie.url}</td>
-          </tr>
-          <tr>
-            <th scope="row">Summary:</th>
-            <td>{foundMovie.summary}</td>
-          </tr>
-        </tbody>
-      </table>
+        <table className="table table-dark table-striped table-hover">
+          <thead>
+            <tr>
+              <th colSpan="2" scope="col">
+                MOVIE DATA
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Rating:</th>
+              <td>{foundMovie.rating} / 10</td>
+            </tr>
+            <tr>
+              <th scope="row">Likes:</th>
+              <td>{foundMovie.likes} Likes</td>
+            </tr>
+            <tr>
+              <th scope="row">Release Date:</th>
+              <td>{foundMovie.year}</td>
+            </tr>
+            <tr>
+              <th scope="row">Genres:</th>
+              <td>{foundMovie.genres}</td>
+            </tr>
+            <tr>
+              <th scope="row">URL:</th>
+              <td>{foundMovie.url}</td>
+            </tr>
+            <tr>
+              <th scope="row">Summary:</th>
+              <td>{foundMovie.summary}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div className="comments_record">
         {/* display comments from the api */}
         <h3 className="commentTitle">Comments</h3>
         <div className="comments">
-          {/* {commentsContainer.map((comment) => (
+          {(fetchedComments.status === 200) ? fetchedComments.data.map((comment) => (
             <div className="comment" key={comment.item_id}>
               <h4 className="commentTitle">{comment.username}</h4>
+              <p className="creationDate">{comment.creation_date}</p>
               <p className="commentText">{comment.comment}</p>
             </div>
-          ))} */}
-        
-      </div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Your Name: " value={username} onChange={(e) => setUserName(e.target.value)} />
-        <textarea type="text" rows="4" cols="50" placeholder="Your insights: " value={comment} onChange={(e) => setComment(e.target.value)} />
-        <button className="submit" type="submit">Comment</button>
-      </form>
+          )) : <h2>Loading...</h2>}
+        </div>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Your Name: "
+            value={username}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+          <textarea
+            type="text"
+            rows="4"
+            cols="50"
+            placeholder="Your insights: "
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
+          <button className="submit" type="submit">
+            Comment
+          </button>
+        </form>
       </div>
     </div>
   );
 };
 
-  export default Comments;
-
-
+export default Comments;
