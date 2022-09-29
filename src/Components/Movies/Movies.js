@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchMovies, selectAllMovies } from '../../redux/movies.redux';
 import Movie from './Movie';
+import Pagination from './Pagination';
 
 const Movies = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [moviesPerPage] = useState(12);
   const movies = useSelector(selectAllMovies);
   const dispatch = useDispatch();
 
@@ -11,10 +14,18 @@ const Movies = () => {
     dispatch(fetchMovies());
   }, [movies, dispatch]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
+  const lastMovieIndex = currentPage * moviesPerPage;
+  const firstMovieIndex = lastMovieIndex - moviesPerPage;
+  const currentMovies = movies.slice(firstMovieIndex, lastMovieIndex);
+
   return (
     <div className="container-fluid">
       <ul className="d-flex gap-5 flex-wrap justify-content-center">
-        {movies.map((movie) => (
+        {currentMovies.map((movie) => (
           <Movie
             key={movie.id}
             movie={movie}
@@ -24,6 +35,12 @@ const Movies = () => {
             likes={movie.likes}
           />
         ))}
+        <Pagination
+          totalMovies={movies.length}
+          moviesPerPage={moviesPerPage}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
       </ul>
     </div>
   );
