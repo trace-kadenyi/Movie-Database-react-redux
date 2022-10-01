@@ -1,17 +1,17 @@
 /* eslint-disable */
-import React from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
 import { NavLink, useParams } from "react-router-dom";
-import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AiOutlineClose } from "react-icons/ai";
+
+import preloader from '../../assets/preloader.gif';
 import {
   selectAllMovies,
   fetchMovies,
   postComment,
 } from "../../redux/movies.redux";
 import "./comments.css";
-import { useState } from "react";
 
 const Comments = () => {
   const [username, setUserName] = useState("");
@@ -112,7 +112,7 @@ const Comments = () => {
       </div>
       <div className="comments_record">
         {/* display comments from the api */}
-        <h3 className="commentTitle">Comments</h3>
+        <h3 className="commentTitle mainT">Comments for {foundMovie.title}</h3>
         <div className="comments">
           {(fetchedComments.status === 200) ? fetchedComments.data.map((comment) => (
             <div className="comment" key={comment.item_id}>
@@ -120,13 +120,14 @@ const Comments = () => {
               <p className="creationDate">{comment.creation_date}</p>
               <p className="commentText">{comment.comment}</p>
             </div>
-          )) : <h2>Loading...</h2>}
+          )) : <img className="preloader" src={preloader} alt="preloader" /> }
         </div>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Your Name: "
             value={username}
+            required
             onChange={(e) => setUserName(e.target.value)}
           />
           <textarea
@@ -135,6 +136,7 @@ const Comments = () => {
             cols="50"
             placeholder="Your insights: "
             value={comment}
+            required
             onChange={(e) => setComment(e.target.value)}
           />
           <button className="submit" type="submit">

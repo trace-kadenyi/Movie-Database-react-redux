@@ -63,9 +63,30 @@ li {
   left: 5px;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5em 0 20px;
+}
+
+.pagination button {
+  padding: 20px;
+  height: 48px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #ccbaba;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .pagination button.active {
   font-weight: 900;
   border-color: #101010;
-  background: #ffe400;
-  color: #101010;
+  background: #000;
+  color: #fff;
 }
+
+

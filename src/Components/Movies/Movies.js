@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchMovies, selectAllMovies } from '../../redux/movies.redux';
@@ -35,13 +37,13 @@ const Movies = () => {
             likes={movie.likes}
           />
         ))}
-        <Pagination
+      </ul>
+      <Pagination
           totalMovies={movies.length}
           moviesPerPage={moviesPerPage}
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}
-        />
-      </ul>
+            />
     </div>
   );
 };

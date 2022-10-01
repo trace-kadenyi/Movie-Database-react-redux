@@ -29,6 +29,8 @@ form {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    width: 350px;
+    margin: auto;
 }
 
 input {
@@ -40,6 +42,7 @@ input {
 
 textarea {
     width: 100%;
+    padding: 10px;
 }
 
 .submit {
@@ -48,7 +51,10 @@ textarea {
     border: 1px solid black;
     border-radius: 10px;
     font-size: 1.2rem;
-    background-color: #f2f2f2;
+    background: linear-gradient(90deg, 
+    cyan 0%,
+    rgb(51, 97, 97) 100%
+  );
     cursor: pointer;
 }
 
@@ -61,3 +67,47 @@ textarea {
     gap: 20px;
 }
 
+.comments {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 50px auto;
+}
+
+.comment {
+    border: 2px black solid;
+    border-radius: 60px;
+    padding: 20px;
+    min-width: 200px;
+    max-height: 200px;
+    text-align: center;
+    flex-grow: 1;
+    background: linear-gradient(90deg, 
+    cyan 0%,
+    rgb(51, 97, 97) 100%
+  );
+    color: #fff;
+}
+
+.comment > * {
+    margin: 0;
+}
+
+.commentTitle {
+    text-align: center;
+}
+
+.mainT {
+    font-style: italic;
+}
+.preloader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.commentLink {
+    text-decoration: none;
+    color: #000;
+}
