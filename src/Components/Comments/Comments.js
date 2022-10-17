@@ -74,7 +74,7 @@ const Comments = () => {
         alt={foundMovie.title}
       />
       <div className="contain">
-        <table className="table table-dark table-striped table-hover">
+        <table className="table text-light">
           <thead>
             <tr>
               <th colSpan="2" scope="col">
@@ -85,7 +85,7 @@ const Comments = () => {
           <tbody>
             <tr>
               <th scope="row">Rating:</th>
-              <td>{foundMovie.rating} / 10</td>
+              <td className="info">{foundMovie.rating} / 10</td>
             </tr>
             <tr>
               <th scope="row">Likes:</th>

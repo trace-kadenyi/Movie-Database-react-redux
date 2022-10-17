@@ -1,11 +1,13 @@
 ul {
   list-style-type: none;
+  color: rgb(34, 65, 65);
 }
 
 .movie_title {
   width: 70%;
   font-size: 1.2em;
   font-weight: bolder;
+  color: white;
 }
 
 li {
@@ -29,11 +31,17 @@ li {
   cursor: pointer;
 }
 
+.not_liked {
+  color: #000;
+}
+
 .likes {
   position: absolute;
   right: 0;
+  color: white;
   top: 430px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   font-weight: bold;
 }
 
@@ -57,6 +65,11 @@ li {
   touch-action: manipulation;
 }
 
+.clicked {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .commentBox:active {
   box-shadow: 0 0 0 0;
   top: 5px;
@@ -73,9 +86,9 @@ li {
 .pagination button {
   padding: 20px;
   height: 48px;
-  border: 1px solid #ddd;
+  border: 1px solid #000;
   border-radius: 5px;
-  background-color: #ccbaba;
+  background-color: rgb(34, 65, 65);
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -84,9 +97,6 @@ li {
 
 .pagination button.active {
   font-weight: 900;
-  border-color: #101010;
-  background: #000;
-  color: #fff;
+  border: none;
+  background: #fff;
 }
-
-

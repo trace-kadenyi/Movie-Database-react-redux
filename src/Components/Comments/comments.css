@@ -1,113 +1,116 @@
 .commentImage {
-    border-radius: 20%;
+  border-radius: 20%;
 }
 
 .movieComments {
-    position: relative;
-    width: 100%;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  position: relative;
+  width: 100%;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .close_me {
-    position: absolute;
-    top: 0;
-    right: 20px;
-    color: black;
-    font-weight: 900;
-    font-size: 2rem;
+  position: absolute;
+  top: 0;
+  right: 20px;
+  color: white;
+  font-weight: 900;
+  font-size: 2rem;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 350px;
-    margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 350px;
+  margin: auto;
 }
 
 input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
 }
 
 textarea {
-    width: 100%;
-    padding: 10px;
+  width: 100%;
+  padding: 10px;
+  outline: none;
 }
 
 .submit {
-    width: 50%;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 10px;
-    font-size: 1.2rem;
-    background: linear-gradient(90deg, 
-    cyan 0%,
-    rgb(51, 97, 97) 100%
-  );
-    cursor: pointer;
+  width: 50%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  background: linear-gradient(90deg, cyan 0%, rgb(51, 97, 97) 100%);
+  cursor: pointer;
 }
 
 .contain {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
 .comments {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 50px auto;
 }
 
 .comment {
-    border: 2px black solid;
-    border-radius: 60px;
-    padding: 20px;
-    min-width: 200px;
-    max-height: 200px;
-    text-align: center;
-    flex-grow: 1;
-    background: linear-gradient(90deg, 
-    cyan 0%,
-    rgb(51, 97, 97) 100%
-  );
-    color: #fff;
+  border: none;
+  border-radius: 60px;
+  padding: 20px;
+  min-width: 200px;
+  max-height: 200px;
+  text-align: center;
+  flex-grow: 1;
+  background: linear-gradient(90deg, cyan 0%, rgb(51, 97, 97) 100%);
+  color: #fff;
 }
 
 .comment > * {
-    margin: 0;
+  margin: 0;
 }
 
 .commentTitle {
-    text-align: center;
+  text-align: center;
+  color: white;
 }
 
 .mainT {
-    font-style: italic;
+  font-style: italic;
 }
 .preloader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
 
 .commentLink {
-    text-decoration: none;
-    color: #000;
+  text-decoration: none;
+  color: #000;
+}
+
+.commentLink:hover {
+  color: #022831;
+  text-decoration: underline;
 }

@@ -1,10 +1,10 @@
 /* eslint-disable */
 
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchMovies, selectAllMovies } from '../../redux/movies.redux';
-import Movie from './Movie';
-import Pagination from './Pagination';
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchMovies, selectAllMovies } from "../../redux/movies.redux";
+import Movie from "./Movie";
+import Pagination from "./Pagination";
 
 const Movies = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,7 +25,7 @@ const Movies = () => {
   const currentMovies = movies.slice(firstMovieIndex, lastMovieIndex);
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid moviesContainer">
       <ul className="d-flex gap-5 flex-wrap justify-content-center">
         {currentMovies.map((movie) => (
           <Movie
@@ -39,11 +39,11 @@ const Movies = () => {
         ))}
       </ul>
       <Pagination
-          totalMovies={movies.length}
-          moviesPerPage={moviesPerPage}
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-            />
+        totalMovies={movies.length}
+        moviesPerPage={moviesPerPage}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
     </div>
   );
 };

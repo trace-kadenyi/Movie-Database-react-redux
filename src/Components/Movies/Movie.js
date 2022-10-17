@@ -22,7 +22,7 @@ const Movie = ({
         <img src={image} className="movie_image" alt={title} />
         <h3 className="movie_title my-2">{title}</h3>
         { likes > 0 ? (<FaHeart className="heart liked" onClick={handleLike} />)
-          : (<FaHeart className="heart" onClick={handleLike} />)}
+          : (<FaHeart className="heart not_liked" onClick={handleLike} />)}
         { likes === 1 ? (
           <span className="likes">
             {likes}
