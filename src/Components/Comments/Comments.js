@@ -114,8 +114,8 @@ const Comments = () => {
         {/* display comments from the api */}
         <h3 className="commentTitle mainT">Comments for {foundMovie.title}</h3>
         <div className="comments">
-          {(fetchedComments.status === 200) ? fetchedComments.data.map((comment) => (
-            <div className="comment" key={comment.item_id}>
+          {(fetchedComments.status === 200) ? fetchedComments.data.map((comment, index) => (
+            <div className="comment" key={index}>
               <h4 className="commentTitle">{comment.username}</h4>
               <p className="creationDate">{comment.creation_date}</p>
               <p className="commentText">{comment.comment}</p>
