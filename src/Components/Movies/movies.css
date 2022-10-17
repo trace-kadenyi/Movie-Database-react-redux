@@ -29,11 +29,12 @@ li {
   top: 410px;
   font-size: 1.1rem;
   cursor: pointer;
-}
-
-.not_liked {
   color: #000;
 }
+
+/* .heart:active {
+  color: red;
+} */
 
 .likes {
   position: absolute;
