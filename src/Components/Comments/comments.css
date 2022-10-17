@@ -77,12 +77,16 @@ textarea {
 .comment {
   border: none;
   border-radius: 60px;
-  padding: 20px;
-  min-width: 200px;
+  padding: 5px;
+  min-width: 150px;
   max-height: 200px;
   text-align: center;
   flex-grow: 1;
-  background: linear-gradient(90deg, cyan 0%, rgb(51, 97, 97) 100%);
+  background: linear-gradient(
+    90deg,
+    rgb(10, 170, 170) 0%,
+    rgb(51, 97, 97) 100%
+  );
   color: #fff;
 }
 
@@ -93,6 +97,17 @@ textarea {
 .commentTitle {
   text-align: center;
   color: white;
+  font-size: 15px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.creationDate {
+  font-size: 10px;
+}
+
+.commentText {
+  font-size: 13px;
 }
 
 .mainT {

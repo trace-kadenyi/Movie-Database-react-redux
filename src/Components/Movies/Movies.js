@@ -8,6 +8,7 @@ import Pagination from "./Pagination";
 
 const Movies = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [search, setSearch] = useState("");
   const [moviesPerPage] = useState(12);
   const movies = useSelector(selectAllMovies);
   const dispatch = useDispatch();
@@ -22,10 +23,22 @@ const Movies = () => {
 
   const lastMovieIndex = currentPage * moviesPerPage;
   const firstMovieIndex = lastMovieIndex - moviesPerPage;
-  const currentMovies = movies.slice(firstMovieIndex, lastMovieIndex);
+  const currentMovies = movies
+    .slice(firstMovieIndex, lastMovieIndex)
+    .filter((movie) => {
+      return movie.title.toLowerCase().includes(search.toLowerCase());
+    });
 
   return (
     <div className="container-fluid moviesContainer">
+      <div className="search_bar">
+        <input
+          className="search"
+          type="text"
+          placeholder="Search"
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
       <ul className="d-flex gap-5 flex-wrap justify-content-center">
         {currentMovies.map((movie) => (
           <Movie

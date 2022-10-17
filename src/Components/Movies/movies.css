@@ -1,3 +1,21 @@
+.search_bar {
+  width: 50%;
+  margin: 100px auto 50px;
+}
+
+.search_bar input {
+  border: none;
+  border-radius: 100px;
+  padding: 20px;
+}
+
+.search_bar input::placeholder {
+  text-align: center;
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  font-style: italic;
+}
+
 ul {
   list-style-type: none;
   color: rgb(34, 65, 65);
@@ -31,10 +49,6 @@ li {
   cursor: pointer;
   color: #000;
 }
-
-/* .heart:active {
-  color: red;
-} */
 
 .likes {
   position: absolute;
