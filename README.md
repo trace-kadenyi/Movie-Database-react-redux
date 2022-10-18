@@ -17,6 +17,7 @@
 ## Preview
 
 ![homepage](src/assets/home.png)
+
 ![commentsPage](src/assets/comments.png)
 
 ## Getting started
