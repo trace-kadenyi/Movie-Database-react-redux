@@ -1,9 +1,31 @@
+.search_bar {
+  width: 50%;
+  margin: 100px auto 50px;
+}
+
+.search_bar input {
+  border: none;
+  border-radius: 100px;
+  padding: 20px;
+}
+
+.search_bar input::placeholder {
+  text-align: center;
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  font-style: italic;
+}
+
 ul {
   list-style-type: none;
+  color: rgb(34, 65, 65);
 }
 
 .movie_title {
   width: 70%;
+  font-size: 1.2em;
+  font-weight: bolder;
+  color: white;
 }
 
 li {
@@ -15,17 +37,27 @@ li {
   height: 90%;
 }
 
+.liked {
+  color: red;
+}
+
 .heart {
   position: absolute;
   right: 0;
   top: 410px;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: #000;
 }
 
-.like {
+.likes {
   position: absolute;
   right: 0;
+  color: white;
   top: 430px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: bold;
 }
 
 .movie_image {
@@ -46,6 +78,11 @@ li {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+}
+
+.clicked {
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .commentBox:active {
