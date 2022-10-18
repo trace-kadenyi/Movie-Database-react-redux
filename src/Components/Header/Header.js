@@ -6,7 +6,7 @@ import "./header.css";
 
 const Header = () => (
   <header>
-    <h1 className="header">Animations</h1>
+    <h1 className="header text-muted">Animations</h1>
     <div className="logo_div">
       <img src={logo1} alt="logo" />
       <img src={logo2} alt="logo" className="hide" />
