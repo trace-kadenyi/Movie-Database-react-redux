@@ -1,0 +1,16 @@
+footer {
+  color: #fff;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto 20px;
+  border-top: 2px white solid;
+}
+
+.footer_span {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+}
