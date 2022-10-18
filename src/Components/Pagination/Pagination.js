@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './movies.css';
+import './pagination.css';
 
 const Pagination = ({
   totalMovies,

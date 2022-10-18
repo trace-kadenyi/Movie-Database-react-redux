@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Movies from './Components/Movies/Movies';
-import Header from './Components/Header';
+import Header from './Components/Header/Header';
 import Comments from './Components/Comments/Comments';
 
 const App = () => (

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMovies, selectAllMovies } from "../../redux/movies.redux";
 import Movie from "./Movie";
-import Pagination from "./Pagination";
+import Pagination from "../Pagination/Pagination";
 
 const Movies = () => {
   const [currentPage, setCurrentPage] = useState(1);
