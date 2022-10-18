@@ -1,11 +1,11 @@
 /* eslint-disable */
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { NavLink, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { AiOutlineClose } from "react-icons/ai";
 
-import preloader from '../../assets/preloader.gif';
+import preloader from "../../assets/preloader.gif";
 import {
   selectAllMovies,
   fetchMovies,
@@ -45,8 +45,9 @@ const Comments = () => {
           foundMovie.id
         )}`
       )
-      .then((res) => {commentsContainer = res
-        setFetchedComments(commentsContainer)
+      .then((res) => {
+        commentsContainer = res;
+        setFetchedComments(commentsContainer);
       })
       .catch((err) => err);
   };
@@ -59,22 +60,19 @@ const Comments = () => {
     window.scrollTo(0, 0);
   }, []);
 
-
   return (
     <div className="movieComments">
       <NavLink to="/" className="closeButton">
         <AiOutlineClose className="close_me" />
       </NavLink>
-      <h3 className="commentTitle">
-        {foundMovie.title} {Number(foundMovie.id)}
-      </h3>
+      <h3 className="commentTitle">{foundMovie.title}</h3>
       <img
         src={foundMovie.image}
         className="commentImage"
         alt={foundMovie.title}
       />
       <div className="contain">
-        <table className="table text-light">
+        <table className="table text-light d-none d-sm-block">
           <thead>
             <tr>
               <th colSpan="2" scope="col">
@@ -114,13 +112,17 @@ const Comments = () => {
         {/* display comments from the api */}
         <h3 className="commentTitle mainT">Comments for {foundMovie.title}</h3>
         <div className="comments">
-          {(fetchedComments.status === 200) ? fetchedComments.data.map((comment, index) => (
-            <div className="comment" key={index}>
-              <h4 className="commentTitle">{comment.username}</h4>
-              <p className="creationDate">{comment.creation_date}</p>
-              <p className="commentText">{comment.comment}</p>
-            </div>
-          )) : <img className="preloader" src={preloader} alt="preloader" /> }
+          {fetchedComments.status === 200 ? (
+            fetchedComments.data.map((comment, index) => (
+              <div className="comment" key={index}>
+                <h4 className="commentTitle">{comment.username}</h4>
+                <p className="creationDate">{comment.creation_date}</p>
+                <p className="commentText">{comment.comment}</p>
+              </div>
+            ))
+          ) : (
+            <img className="preloader" src={preloader} alt="preloader" />
+          )}
         </div>
         <form onSubmit={handleSubmit}>
           <input
