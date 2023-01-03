@@ -11,7 +11,7 @@
 - Library/Framework: Reactjs | Redux 
 
 ## Live Demo
-[Live Demo Link](https://coruscating-genie-d8a5ca.netlify.app/)
+[Live Demo Link](https://animation-database.netlify.app/)
 
 
 ## Preview
