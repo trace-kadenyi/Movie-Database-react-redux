@@ -30,7 +30,7 @@ $ git clone https://github.com/TracK92/Movie-Database-react-redux.git
 
 #### cd into directory
 ```
-$ cd <relative-path>/space-travellers-hub/
+$ cd <relative-path>/movie-database-react-redux/
 ```
 
 #### install dependencies
